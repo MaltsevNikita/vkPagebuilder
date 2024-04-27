@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 
 // Инициализируем начальные опции для select с девятью товарами
 const options = [
-  { name: 'текст ', price: 500 },
-  { name: 'текст + каринка', price: 100 },
+  { name: 'текст ', price: 100 },
+  { name: 'текст + каринка', price: 500 },
   { name: 'текст + галерея', price: 4000 },
   { name: 'текст + слайдер', price: 2500 },
   { name: 'список с маркерами', price: 2100 },
