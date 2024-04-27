@@ -54,6 +54,7 @@ const App = () => {
   const calculateCost = () => {
     const totalCost = selects.reduce((acc, select) => acc + select.price, 0);
     console.log('Общая стоимость: ' + totalCost);
+    return totalCost
   };
 
   const clearAll = () => {
@@ -62,25 +63,36 @@ const App = () => {
 
   return (
     <div>
-      <button onClick={addSelect}>+</button>
-      <button onClick={calculateCost}>Рассчитать стоимость</button>
-      <button onClick={clearAll}>Очистить всё</button>
+      <div className="buttons d-flex justify-content-start">
+        <button  class="m-1 btn btn-primary" onClick={addSelect}>+</button>
+        <button  class="m-1 btn btn-success" onClick={calculateCost}>Рассчитать стоимость</button>
+        <button  class="m-1 btn btn-danger" className='btn btn-danger' onClick={clearAll}>Очистить всё</button>
+      </div>
+
+      <h1 className='m-2'>Общая стоимость: {calculateCost()}  руб.</h1>
+
       {selects.map((select, index) => (
         <div key={index}>
-          <select
+          <div className="selectBlock d-flex mt-5">
+            <select
             value={select.name}
+            className="m-1"
             onChange={(e) => handleSelectChange(e.target.value, index)}
           >
-            <option value="">Выберите товар</option>
+            <option value="">Выберите секцию</option>
             {options.map((option) => (
               <option key={option.name} value={option.name}>
                 {option.name}
               </option>
             ))}
           </select>
-          <button onClick={() => moveSelectUp(index)}>Вверх</button>
-          <button onClick={() => moveSelectDown(index)}>Вниз</button>
-          <button onClick={() => removeSelect(index)}>Удалить</button>
+          <div className="buttonsSelect d-flex justify-content-start">
+            <button class="btn btn-primary m-1 btn-sm"  onClick={() => moveSelectUp(index)}>Вверх</button>
+            <button class="btn btn-primary m-1 btn-sm" onClick={() => moveSelectDown(index)}>Вниз</button>
+            <button class="btn btn-primary m-1 btn-sm" onClick={() => removeSelect(index)}>Удалить</button>
+          </div>
+          </div>
+
         </div>
       ))}
     </div>
